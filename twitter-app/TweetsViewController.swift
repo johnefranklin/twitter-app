@@ -16,6 +16,10 @@ class TweetsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func onLogout(sender: UIButton) {
+        User.currentUser?.logout()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
