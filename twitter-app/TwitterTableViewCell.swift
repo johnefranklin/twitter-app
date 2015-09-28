@@ -10,7 +10,7 @@ import UIKit
 
 class TwitterTableViewCell: UITableViewCell {
 
-    
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -22,6 +22,7 @@ class TwitterTableViewCell: UITableViewCell {
             nicknameLabel.text = "@" + (tweet.user?.screenname)!
             tweetLabel.text = tweet.text
             twitterImageView.setImageWithURL(NSURL(string: (tweet.user?.profileImageUrl)!))
+            dateLabel.text = tweet.printableDate
         }
     }
     
@@ -32,11 +33,15 @@ class TwitterTableViewCell: UITableViewCell {
         twitterImageView.clipsToBounds = true
         nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
         nicknameLabel.preferredMaxLayoutWidth = nicknameLabel.frame.size.width
+        dateLabel.preferredMaxLayoutWidth = dateLabel.frame.size.width
+        tweetLabel.preferredMaxLayoutWidth = tweetLabel.frame.size.width
     }
     
     override func layoutSubviews() {
         nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
         nicknameLabel.preferredMaxLayoutWidth = nicknameLabel.frame.size.width
+        dateLabel.preferredMaxLayoutWidth = dateLabel.frame.size.width
+        tweetLabel.preferredMaxLayoutWidth = tweetLabel.frame.size.width
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
