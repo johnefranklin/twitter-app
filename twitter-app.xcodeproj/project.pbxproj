@@ -18,6 +18,7 @@
 		AEDF491F1BB7996A0004B0A4 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF491E1BB7996A0004B0A4 /* Tweet.swift */; settings = {ASSET_TAGS = (); }; };
 		AEDF49261BB834940004B0A4 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF49251BB834940004B0A4 /* TweetsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AEDF49281BB950180004B0A4 /* HomeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF49271BB950180004B0A4 /* HomeNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
+		AEDF492A1BB968CE0004B0A4 /* TwitterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDF49291BB968CE0004B0A4 /* TwitterTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		AEDF491E1BB7996A0004B0A4 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		AEDF49251BB834940004B0A4 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		AEDF49271BB950180004B0A4 /* HomeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNavigationController.swift; sourceTree = "<group>"; };
+		AEDF49291BB968CE0004B0A4 /* TwitterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTableViewCell.swift; sourceTree = "<group>"; };
 		ED3C46CB6348E22291F2766A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 		AEDF49221BB833740004B0A4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AEDF49291BB968CE0004B0A4 /* TwitterTableViewCell.swift */,
 				AEDF49271BB950180004B0A4 /* HomeNavigationController.swift */,
 				AE6D29EF1BB6262700F06FD3 /* ViewController.swift */,
 				AEDF49251BB834940004B0A4 /* TweetsViewController.swift */,
@@ -238,6 +241,7 @@
 				AEDF491D1BB799560004B0A4 /* User.swift in Sources */,
 				AEDF491F1BB7996A0004B0A4 /* Tweet.swift in Sources */,
 				AEDF49261BB834940004B0A4 /* TweetsViewController.swift in Sources */,
+				AEDF492A1BB968CE0004B0A4 /* TwitterTableViewCell.swift in Sources */,
 				AEDF49281BB950180004B0A4 /* HomeNavigationController.swift in Sources */,
 				AE6D29F01BB6262700F06FD3 /* ViewController.swift in Sources */,
 				AEDF491A1BB628430004B0A4 /* TwitterClient.swift in Sources */,

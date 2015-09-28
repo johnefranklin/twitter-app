@@ -26,6 +26,18 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         return Static.instance
     }
     
+    func homeTimelineWithParams(params : NSDictionary?, completion : (tweets : [Tweet]?, error : NSError?) -> ()) {
+        GET("1.1/statuses/home_timeline.json", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            //print ("timeline : \(response)")
+            let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+            completion(tweets: tweets, error: nil)
+        }, failure: { (operation : AFHTTPRequestOperation!, error : NSError!) -> Void in
+            print("error getting timeline")
+        completion(tweets: nil, error: error)
+        })
+
+    }
+    
     func loginWithCompletion(completion : (user : User?, error : NSError?) -> ()) {
         
         loginCompletion = completion
@@ -59,15 +71,6 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                     self.loginCompletion?(user : nil, error : error)
             })
             
-            TwitterClient.sharedInstance.GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-                //print ("timeline : \(response)")
-                let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
-                for tweet in tweets {
-                    print("text: \(tweet.text), created At: \(tweet.createdAt)")
-                }
-                }, failure: { (operation : AFHTTPRequestOperation!, error : NSError!) -> Void in
-                    print("error getting timeline")
-            })
             
             }) { (error : NSError!) -> Void in
                 print("error getting access token")
