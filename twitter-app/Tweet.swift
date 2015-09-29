@@ -51,6 +51,9 @@ class Tweet: NSObject {
     var printableDate : String?
     var retweetCount : Int?
     var favoritesCount : Int?
+    var idStr :String?
+    var retweeted : Bool?
+    var favorited : Bool?
 
     init(dictionary : NSDictionary) {
         user = User(dictionary: (dictionary["user"] as? NSDictionary)!)
@@ -64,6 +67,9 @@ class Tweet: NSObject {
         
         retweetCount = dictionary["retweet_count"] as? Int
         favoritesCount = dictionary["favourites_count"] as? Int
+        idStr = dictionary["id_str"] as? String
+        retweeted = dictionary["retweeted"] as? Bool
+        favorited = dictionary["favorited"] as? Bool
         
 //        let dateFormatter = NSDateFormatter()
 //        //To prevent displaying either date or time, set the desired style to NoStyle.

@@ -38,12 +38,25 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
 
     }
     
+    func retweetWithParams(params : NSDictionary?, id : String, completion : (tweet : Tweet?, error : NSError?) -> ()) {
+        let endpoint = "1.1/statuses/retweet/" + id + ".json"
+        POST(endpoint, parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            print("Retweet success")
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            completion(tweet : tweet, error: nil)
+            }) { (operation : AFHTTPRequestOperation!, error : NSError!) -> Void in
+                print ("oops couldn't retweet")
+                completion(tweet : nil, error : error)
+        }
+    }
+    
     func tweetWithParams(params : NSDictionary?, completion : (error : NSError?) -> ()) {
-        POST("1.1/statuses/update.json", parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-                print("Tweet success")
+        let endpoint = "1.1/statuses/update.json"
+        POST(endpoint, parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+                print("Retweet success")
                 completion(error: nil)
             }) { (operation : AFHTTPRequestOperation!, error : NSError!) -> Void in
-                print ("oops couldn't tweet")
+                print ("oops couldn't retweet")
                 completion(error : error)
         }
     }

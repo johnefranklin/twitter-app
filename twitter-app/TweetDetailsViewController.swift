@@ -24,6 +24,26 @@ class TweetDetailsViewController: UIViewController {
     @IBOutlet weak var retweetImageView: UIImageView!
     @IBOutlet weak var favoriteImageView: UIImageView!
     
+    @IBAction func onReplyImageTouched(sender: UITapGestureRecognizer) {
+        print("reply image touched")
+    }
+    
+    @IBAction func onRetweetImageTouched(sender: UITapGestureRecognizer) {
+        print("retweet image touched")
+        TwitterClient.sharedInstance.retweetWithParams(nil, id: (tweet?.idStr)!) { (tweet, error) -> () in
+            if tweet != nil {
+                print("retweet success")
+                var image = UIImage(named: "retweet_on")
+                self.retweetImageView.image = image
+                self.reloadInputViews()
+            } else {
+                print("retweet failed")
+            }
+        }
+    }
+    @IBAction func onFavoriteImageTouched(sender: AnyObject) {
+        print("favorite image touched")
+    }
     @IBAction func onHome(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -31,12 +51,6 @@ class TweetDetailsViewController: UIViewController {
     @IBAction func onReply(sender: UIBarButtonItem) {
         
     }
-    
-    
-    @IBAction func onReplyImageTouched(sender: AnyObject) {
-        print("reply called")
-    }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +67,15 @@ class TweetDetailsViewController: UIViewController {
             self.dateLabel.text = t.createdAtString
             self.retweetCountLabel.text = String(t.retweetCount as Int!)
             self.favoritesCountLabel.text = String(t.favoritesCount as Int!)
+            if (t.favorited!) {
+                let image = UIImage(named: "favorite_on")
+                self.favoriteImageView.image = image
+            }
+            if (t.retweeted!) {
+                let image = UIImage(named: "retweet_on")
+                self.retweetImageView.image = image
+            }
+            self.reloadInputViews()
             
         } else {
             print ("tweet is nil")
