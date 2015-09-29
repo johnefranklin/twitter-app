@@ -27,7 +27,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 120
+        tableView.estimatedRowHeight = 200
         
         //load tweets
         TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
@@ -71,14 +71,22 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let cell = sender as! UITableViewCell
+        let indexPath = self.tableView.indexPathForCell(cell)
+        let tweet = self.tweets[indexPath!.row]
+        let detailsNavController = segue.destinationViewController as! UINavigationController
+        let detailsViewController = detailsNavController.topViewController as! TweetDetailsViewController
+        detailsViewController.tweet = tweet
+        
+        
     }
-    */
+    
 
 }

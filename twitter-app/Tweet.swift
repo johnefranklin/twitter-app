@@ -8,6 +8,40 @@
 
 import UIKit
 
+extension NSDate {
+    func yearsFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Year, fromDate: date, toDate: self, options: []).year
+    }
+    func monthsFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Month, fromDate: date, toDate: self, options: []).month
+    }
+    func weeksFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.WeekOfYear, fromDate: date, toDate: self, options: []).weekOfYear
+    }
+    func daysFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Day, fromDate: date, toDate: self, options: []).day
+    }
+    func hoursFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Hour, fromDate: date, toDate: self, options: []).hour
+    }
+    func minutesFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Minute, fromDate: date, toDate: self, options: []).minute
+    }
+    func secondsFrom(date:NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Second, fromDate: date, toDate: self, options: []).second
+    }
+    func offsetFrom(date:NSDate) -> String {
+        if yearsFrom(date)   > 0 { return "\(yearsFrom(date))y"   }
+        if monthsFrom(date)  > 0 { return "\(monthsFrom(date))M"  }
+        if weeksFrom(date)   > 0 { return "\(weeksFrom(date))w"   }
+        if daysFrom(date)    > 0 { return "\(daysFrom(date))d"    }
+        if hoursFrom(date)   > 0 { return "\(hoursFrom(date))h"   }
+        if minutesFrom(date) > 0 { return "\(minutesFrom(date))m" }
+        if secondsFrom(date) > 0 { return "\(secondsFrom(date))s" }
+        return ""
+    }
+}
+
 class Tweet: NSObject {
     
     var user : User?
@@ -15,6 +49,8 @@ class Tweet: NSObject {
     var createdAtString : String?
     var createdAt : NSDate?
     var printableDate : String?
+    var retweetCount : Int?
+    var favoritesCount : Int?
 
     init(dictionary : NSDictionary) {
         user = User(dictionary: (dictionary["user"] as? NSDictionary)!)
@@ -26,19 +62,25 @@ class Tweet: NSObject {
         //formatter.dateFormat = "mm/dd/yy HH:mm:ss"
         createdAt = formatter.dateFromString(createdAtString!)
         
-        let dateFormatter = NSDateFormatter()
-        //To prevent displaying either date or time, set the desired style to NoStyle.
-        dateFormatter.timeStyle = NSDateFormatterStyle.MediumStyle //Set time style
-        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle //Set date style
-        dateFormatter.timeZone = NSTimeZone()
-        //let localDate = dateFormatter.stringFromDate(date)
+        retweetCount = dictionary["retweet_count"] as? Int
+        favoritesCount = dictionary["favourites_count"] as? Int
         
-        let usDateFormat = NSDateFormatter.dateFormatFromTemplate("MMddyyyy HH:mm:ss", options: 0, locale: NSLocale(localeIdentifier: "en-US"))
-        let printDateFormatter = NSDateFormatter()
-        printDateFormatter.dateFormat = usDateFormat
-        printableDate = printDateFormatter.stringFromDate(createdAt!)
-        print(printableDate)
-        //usDateFormat now contains an optional string "MM/dd/yyyy".
+//        let dateFormatter = NSDateFormatter()
+//        //To prevent displaying either date or time, set the desired style to NoStyle.
+//        dateFormatter.timeStyle = NSDateFormatterStyle.MediumStyle //Set time style
+//        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle //Set date style
+//        dateFormatter.timeZone = NSTimeZone()
+//        //let localDate = dateFormatter.stringFromDate(date)
+//        
+//        let usDateFormat = NSDateFormatter.dateFormatFromTemplate("MMddyyyy HH:mm:ss", options: 0, locale: NSLocale(localeIdentifier: "en-US"))
+//        let printDateFormatter = NSDateFormatter()
+//        printDateFormatter.dateFormat = usDateFormat
+//        printableDate = printDateFormatter.stringFromDate(createdAt!)
+//        print(printableDate)
+        
+        let date1 = NSDate()
+        
+        printableDate = date1.offsetFrom(createdAt!)
     }
     
     class func tweetsWithArray(array : [NSDictionary]) -> [Tweet] {
@@ -49,3 +91,4 @@ class Tweet: NSObject {
         return tweets
     }
 }
+

@@ -17,7 +17,7 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var tweetTextView: UITextView!
     
     @IBAction func onTweet(sender: UIBarButtonItem) {
-        var tweetText = tweetTextView.text
+        let tweetText = tweetTextView.text
         if tweetText.isEmpty {
             print ("no empty string tweets")
         } else {
@@ -42,10 +42,15 @@ class ComposeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let color = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
+        
+        tweetTextView.layer.borderColor = color.CGColor;
+        tweetTextView.layer.borderWidth = 1.0;
+        tweetTextView.layer.cornerRadius = 5.0;
 
         composeImageView.setImageWithURL(NSURL(string: (User.currentUser?.profileImageUrl)!))
         nameLabel.text = User.currentUser?.name
-        screennameLabel.text = User.currentUser?.screenname
+        screennameLabel.text = "@" + (User.currentUser?.screenname)!
     }
 
     override func didReceiveMemoryWarning() {
