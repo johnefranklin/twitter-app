@@ -50,14 +50,27 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         }
     }
     
-    func tweetWithParams(params : NSDictionary?, completion : (error : NSError?) -> ()) {
+    func tweetWithParams(params : NSDictionary?, completion : (tweet : Tweet?, error : NSError?) -> ()) {
         let endpoint = "1.1/statuses/update.json"
         POST(endpoint, parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
-                print("Retweet success")
-                completion(error: nil)
+            print("Tweet success")
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            completion(tweet : tweet, error: nil)
             }) { (operation : AFHTTPRequestOperation!, error : NSError!) -> Void in
-                print ("oops couldn't retweet")
-                completion(error : error)
+                print ("oops couldn't tweet")
+                completion(tweet : nil, error : error)
+        }
+    }
+    
+    func favoriteWithParams(params : NSDictionary?, completion : (tweet : Tweet?, error : NSError?) -> ()) {
+        let endpoint = "1.1/favorites/create.json"
+        POST(endpoint, parameters: params, success: { (operation : AFHTTPRequestOperation!, response : AnyObject!) -> Void in
+            print("favoriting tweet success")
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            completion(tweet : tweet, error: nil)
+            }) { (operation : AFHTTPRequestOperation!, error : NSError!) -> Void in
+                print ("oops couldn't favorite the tweet")
+                completion(tweet : nil, error : error)
         }
     }
     

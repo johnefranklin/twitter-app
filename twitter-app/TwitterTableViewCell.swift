@@ -16,6 +16,10 @@ class TwitterTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var twitterImageView: UIImageView!
     
+    @IBOutlet weak var favorite: UIImageView!
+    @IBOutlet weak var reply: UIImageView!
+    @IBOutlet weak var retweet: UIImageView!
+    
     var tweet : Tweet! {
         didSet {
             nameLabel.text = tweet.user!.name
@@ -23,6 +27,20 @@ class TwitterTableViewCell: UITableViewCell {
             tweetLabel.text = tweet.text
             twitterImageView.setImageWithURL(NSURL(string: (tweet.user?.profileImageUrl)!))
             dateLabel.text = tweet.printableDate
+            var image : UIImage
+            if tweet.favorited! {
+                image = UIImage(named: "favorite_on")!
+            } else {
+                image = UIImage(named: "favorite")!
+            }
+            favorite.image = image
+            if tweet.retweeted! {
+                image = UIImage(named: "retweet_on")!
+            } else {
+                image = UIImage(named: "retweet")!
+            }
+            retweet.image = image
+            //self.layoutSubviews()
         }
     }
     
@@ -31,17 +49,10 @@ class TwitterTableViewCell: UITableViewCell {
         // Initialization code
         twitterImageView.layer.cornerRadius = 3
         twitterImageView.clipsToBounds = true
-        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
-        nicknameLabel.preferredMaxLayoutWidth = nicknameLabel.frame.size.width
-        dateLabel.preferredMaxLayoutWidth = dateLabel.frame.size.width
-        tweetLabel.preferredMaxLayoutWidth = tweetLabel.frame.size.width
     }
     
     override func layoutSubviews() {
-        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
-        nicknameLabel.preferredMaxLayoutWidth = nicknameLabel.frame.size.width
-        dateLabel.preferredMaxLayoutWidth = dateLabel.frame.size.width
-        tweetLabel.preferredMaxLayoutWidth = tweetLabel.frame.size.width
+        super.layoutSubviews()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -15,22 +15,32 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var screennameLabel: UILabel!
     
     @IBOutlet weak var tweetTextView: UITextView!
+    @IBOutlet weak var tweetStatus: UILabel!
     
     @IBAction func onTweet(sender: UIBarButtonItem) {
         let tweetText = tweetTextView.text
         if tweetText.isEmpty {
-            print ("no empty string tweets")
+            self.tweetStatus.textColor = UIColor.redColor()
+            tweetStatus.text = "no empty tweets please"
         } else {
+            self.tweetStatus.text = ""
             var params : Dictionary<String,String> = [:]
             params["status"] = tweetText
-            TwitterClient.sharedInstance.tweetWithParams(params) { (error) -> () in
-                if (error != nil) {
+            TwitterClient.sharedInstance.tweetWithParams(params, completion: { (tweet, error) -> () in
+                if tweet != nil {
+                    // success
+                    self.tweetStatus.textColor = UIColor.greenColor()
+                    self.tweetStatus.text = "success"
+                } else {
+                    // error
                     print("error in tweet")
                     print(error)
+                    self.tweetStatus.textColor = UIColor.redColor()
+                    self.tweetStatus.text = error?.localizedDescription
                 }
-            }
-            tweetTextView.text = ""
-            view.reloadInputViews()
+            })
+            
+            //view.reloadInputViews()
         }
         
     }

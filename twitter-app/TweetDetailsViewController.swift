@@ -19,13 +19,13 @@ class TweetDetailsViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var retweetCountLabel: UILabel!
     @IBOutlet weak var favoritesCountLabel: UILabel!
-    
     @IBOutlet weak var replyImageView: UIImageView!
     @IBOutlet weak var retweetImageView: UIImageView!
     @IBOutlet weak var favoriteImageView: UIImageView!
     
     @IBAction func onReplyImageTouched(sender: UITapGestureRecognizer) {
         print("reply image touched")
+        performSegueWithIdentifier("ReplySegue", sender: sender)
     }
     
     @IBAction func onRetweetImageTouched(sender: UITapGestureRecognizer) {
@@ -33,16 +33,31 @@ class TweetDetailsViewController: UIViewController {
         TwitterClient.sharedInstance.retweetWithParams(nil, id: (tweet?.idStr)!) { (tweet, error) -> () in
             if tweet != nil {
                 print("retweet success")
-                var image = UIImage(named: "retweet_on")
+                let image = UIImage(named: "retweet_on")
                 self.retweetImageView.image = image
                 self.reloadInputViews()
             } else {
                 print("retweet failed")
+                print(error)
             }
         }
     }
     @IBAction func onFavoriteImageTouched(sender: AnyObject) {
         print("favorite image touched")
+        var params : Dictionary<String,String> = [:]
+        params["id"] = tweet?.idStr
+        TwitterClient.sharedInstance.favoriteWithParams(params) { (tweet, error) -> () in
+            if tweet != nil {
+                print("favoriting tweet success")
+                let image = UIImage(named: "favorite_on")
+                self.favoriteImageView.image = image
+                self.reloadInputViews()
+            } else {
+                print("favoriting tweet failed")
+                print(error)
+            }
+        }
+
     }
     @IBAction func onHome(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -64,6 +79,7 @@ class TweetDetailsViewController: UIViewController {
             self.nameLabel.text = t.user?.name
             self.screennameLabel.text = "@" + (t.user?.screenname)!
             self.tweetTextLabel.text = t.text
+            self.tweetTextLabel.preferredMaxLayoutWidth = self.tweetTextLabel.frame.size.width
             self.dateLabel.text = t.createdAtString
             self.retweetCountLabel.text = String(t.retweetCount as Int!)
             self.favoritesCountLabel.text = String(t.favoritesCount as Int!)
@@ -75,12 +91,16 @@ class TweetDetailsViewController: UIViewController {
                 let image = UIImage(named: "retweet_on")
                 self.retweetImageView.image = image
             }
-            self.reloadInputViews()
+            //self.loadView()
             
         } else {
             print ("tweet is nil")
         }
         
+    }
+    
+    override func loadView() {
+        super.loadView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,14 +111,18 @@ class TweetDetailsViewController: UIViewController {
     
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let nvc = segue.destinationViewController as! UINavigationController
+        let vc = nvc.topViewController as! ReplyViewController
+        vc.tweet = self.tweet
+        
     }
-    */
+    
 
 }
