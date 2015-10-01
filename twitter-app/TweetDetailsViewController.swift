@@ -83,14 +83,21 @@ class TweetDetailsViewController: UIViewController {
             self.dateLabel.text = t.createdAtString
             self.retweetCountLabel.text = String(t.retweetCount as Int!)
             self.favoritesCountLabel.text = String(t.favoritesCount as Int!)
-            if (t.favorited!) {
-                let image = UIImage(named: "favorite_on")
-                self.favoriteImageView.image = image
+            var image : UIImage
+            if t.favorited! {
+                image = UIImage(named: "favorite_on")!
+            } else {
+                image = UIImage(named: "favorite")!
             }
-            if (t.retweeted!) {
-                let image = UIImage(named: "retweet_on")
-                self.retweetImageView.image = image
+            favoriteImageView.image = image
+            var image1 : UIImage
+            if t.retweeted! {
+                image1 = UIImage(named: "retweet_on")!
+            } else {
+                image1 = UIImage(named: "retweet")!
             }
+            retweetImageView.image = image1
+            
             //self.loadView()
             
         } else {

@@ -67,20 +67,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="72.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ikw-Yc-hDk" userLabel="Twitter Image">
-                                                    <rect key="frame" x="8" y="-4" width="64" height="64"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="64" placeholderIntrinsicHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="Ikw-Yc-hDk" userLabel="Twitter Image">
+                                                    <rect key="frame" x="8" y="-5" width="64" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="64" id="FR7-di-qx3"/>
                                                         <constraint firstAttribute="height" constant="64" id="gDi-Cu-8bO"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lt-7z-2ba">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lt-7z-2ba">
                                                     <rect key="frame" x="80" y="8" width="35" height="16"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="252" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="751" text="Nickname" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ji-jN-2Td">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" text="Nickname" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ji-jN-2Td">
                                                     <rect key="frame" x="123" y="8" width="48" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -103,21 +103,21 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorite" translatesAutoresizingMaskIntoConstraints="NO" id="GeP-9W-dlC">
+                                                <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" image="favorite" translatesAutoresizingMaskIntoConstraints="NO" id="GeP-9W-dlC">
                                                     <rect key="frame" x="312" y="44" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="6oz-BU-a5c"/>
                                                         <constraint firstAttribute="width" constant="16" id="zss-tv-tj5"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet" translatesAutoresizingMaskIntoConstraints="NO" id="0RV-KB-Ud2">
+                                                <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" image="retweet" translatesAutoresizingMaskIntoConstraints="NO" id="0RV-KB-Ud2">
                                                     <rect key="frame" x="196" y="44" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="16" id="Iuv-Zi-YFb"/>
                                                         <constraint firstAttribute="height" constant="16" id="mcc-xB-0pr"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply" translatesAutoresizingMaskIntoConstraints="NO" id="lVr-iB-M1l">
+                                                <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" image="reply" translatesAutoresizingMaskIntoConstraints="NO" id="lVr-iB-M1l">
                                                     <rect key="frame" x="80" y="44" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="eMO-jD-xTb"/>

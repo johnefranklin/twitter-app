@@ -61,7 +61,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TwitterTableViewCell", forIndexPath: indexPath) as! TwitterTableViewCell
-        cell.reloadInputViews()
         cell.tweet = tweets[indexPath.row] as Tweet
         let tappedReply : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedReply:")
         tappedReply.numberOfTapsRequired = 1
@@ -96,7 +95,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                         print("retweet success")
                         let image = UIImage(named: "retweet_on")
                         tappedCell.retweet.image = image
-                        tappedCell.reloadInputViews()
+                        //tappedCell.reloadInputViews()
                     } else {
                         print("retweet failed")
                         print(error)
@@ -120,7 +119,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                         print("favoriting tweet success")
                         let image = UIImage(named: "favorite_on")
                         tappedCell.favorite.image = image
-                        tappedCell.reloadInputViews()
+                        //tappedCell.reloadInputViews()
                     } else {
                         print("favoriting tweet failed")
                         print(error)
