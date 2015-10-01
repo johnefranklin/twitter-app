@@ -371,11 +371,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tweet" id="Fbq-In-tOL">
                         <barButtonItem key="leftBarButtonItem" title="Home" id="KM8-A4-5Kg">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onHome:" destination="dSx-TR-4qf" id="toW-0j-SR1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Reply" id="iao-lN-UJa">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onReply:" destination="dSx-TR-4qf" id="qSb-MJ-SX4"/>
                                 <segue destination="d5U-xz-vQG" kind="presentation" identifier="ReplySegue" id="p9o-ie-1eZ"/>
@@ -503,11 +505,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Reply" id="k1e-KO-1ph">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="mzm-Yp-3K1">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onBack:" destination="0C8-5g-5kG" id="tZP-O8-vl3"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Send" id="7V3-4B-xuL">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onSend:" destination="0C8-5g-5kG" id="PCH-1v-hge"/>
                             </connections>
@@ -606,11 +610,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Compose" id="Mg7-km-VH1">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="6Gn-k7-9EP">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onCancel:" destination="7kD-dC-ain" id="JgG-yZ-I1R"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Tweet" id="d7l-se-74x">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onTweet:" destination="7kD-dC-ain" id="2fT-nn-vUn"/>
                             </connections>
@@ -725,6 +731,6 @@
         <image name="retweet" width="19" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aZe-SQ-fAV"/>
+        <segue reference="p9o-ie-1eZ"/>
     </inferredMetricsTieBreakers>
 </document>

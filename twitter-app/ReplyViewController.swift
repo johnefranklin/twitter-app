@@ -21,6 +21,10 @@ class ReplyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.25, green:0.60, blue:1.00, alpha:1.0)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
         let color = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
         replyTextView.layer.borderColor = color.CGColor;
         replyTextView.layer.borderWidth = 1.0;
