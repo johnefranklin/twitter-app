@@ -66,7 +66,7 @@ class Tweet: NSObject {
         createdAt = formatter.dateFromString(createdAtString!)
         
         retweetCount = dictionary["retweet_count"] as? Int
-        favoritesCount = dictionary["favourite_count"] as? Int
+        favoritesCount = dictionary["favorite_count"] as? Int
         idStr = dictionary["id_str"] as? String
         retweeted = dictionary["retweeted"] as? Bool
         favorited = dictionary["favorited"] as? Bool
