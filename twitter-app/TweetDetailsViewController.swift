@@ -79,7 +79,6 @@ class TweetDetailsViewController: UIViewController {
             self.nameLabel.text = t.user?.name
             self.screennameLabel.text = "@" + (t.user?.screenname)!
             self.tweetTextLabel.text = t.text
-            self.tweetTextLabel.preferredMaxLayoutWidth = self.tweetTextLabel.frame.size.width
             self.dateLabel.text = t.createdAtString
             self.retweetCountLabel.text = String(t.retweetCount as Int!)
             self.favoritesCountLabel.text = String(t.favoritesCount as Int!)
@@ -97,9 +96,7 @@ class TweetDetailsViewController: UIViewController {
                 image1 = UIImage(named: "retweet")!
             }
             retweetImageView.image = image1
-            
-            //self.loadView()
-            
+                        
         } else {
             print ("tweet is nil")
         }

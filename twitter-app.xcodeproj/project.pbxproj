@@ -136,7 +136,6 @@
 				AEDF49341BBC30CA0004B0A4 /* ReplyViewController.swift */,
 				AEDF492D1BB9EABB0004B0A4 /* TweetDetailsViewController.swift */,
 				AEDF492B1BB999250004B0A4 /* ComposeViewController.swift */,
-				AEDF49291BB968CE0004B0A4 /* TwitterTableViewCell.swift */,
 				AEDF49271BB950180004B0A4 /* HomeNavigationController.swift */,
 				AE6D29EF1BB6262700F06FD3 /* ViewController.swift */,
 				AEDF49251BB834940004B0A4 /* TweetsViewController.swift */,
@@ -147,6 +146,7 @@
 		AEDF49311BBA4F110004B0A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AEDF49291BB968CE0004B0A4 /* TwitterTableViewCell.swift */,
 				AEDF492F1BBA4F090004B0A4 /* ReplyImageView.swift */,
 			);
 			name = Views;

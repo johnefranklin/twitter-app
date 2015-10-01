@@ -40,7 +40,7 @@ class TwitterTableViewCell: UITableViewCell {
                 image = UIImage(named: "retweet")!
             }
             retweet.image = image
-            //self.layoutSubviews()
+            self.layoutSubviews()
         }
     }
     
